@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Text field with a floating name label and validations"
   s.description  = <<-DESC
                    FFCTextField is a small collection of features for implementing
-                   elegane text fields suitable for use in forms, and elsewhere.
+                   elegant text fields suitable for use in forms, and elsewhere.
 
                    The text field's placeholder text animates into a floating title
                    label.
