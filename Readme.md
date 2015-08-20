@@ -1,5 +1,7 @@
 # FFCTextField
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 FFCTextField is a small collection of features for implementing
 elegant text fields suitable for use in forms, and elsewhere.
 
