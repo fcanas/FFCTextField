@@ -8,11 +8,11 @@
 
 import UIKit
 
-class NamedTextField: UITextField {
+public class NamedTextField: UITextField {
 
     let nameLabel = UILabel()
 
-    var nameFont :UIFont = UIFont.systemFontOfSize(12) {
+    public var nameFont :UIFont = UIFont.systemFontOfSize(12) {
         didSet {
             nameLabel.font = nameFont
             validationLabel.font = nameFont
@@ -26,7 +26,7 @@ class NamedTextField: UITextField {
         }
     }
 
-    override var placeholder :String? {
+    public override var placeholder :String? {
         didSet {
             nameLabel.text = placeholder
             nameLabel.sizeToFit()
@@ -37,20 +37,20 @@ class NamedTextField: UITextField {
 
     var hasEverResignedFirstResponder = false
 
-    override func resignFirstResponder() -> Bool {
+    public override func resignFirstResponder() -> Bool {
         hasEverResignedFirstResponder = true
         return super.resignFirstResponder()
     }
 
     let validationLabel = UILabel()
 
-    var validationColor: UIColor = UIColor.redColor() {
+    public var validationColor: UIColor = UIColor.redColor() {
         didSet {
             validationLabel.textColor = validationColor
         }
     }
 
-    var validation: (String?) -> (Bool, String) = { _ in (true, "") }
+    public var validation: (String?) -> (Bool, String) = { _ in (true, "") }
 
     private func validate() {
         let (valid, errorString) = validation(text)
@@ -76,7 +76,7 @@ class NamedTextField: UITextField {
 
     // MARK: Layout
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         validate()
     }
@@ -99,14 +99,14 @@ class NamedTextField: UITextField {
         })
     }
 
-    override func textRectForBounds(bounds:CGRect) -> CGRect {
+    override public func textRectForBounds(bounds:CGRect) -> CGRect {
         var r = super.textRectForBounds(bounds)
         var top = ceil(nameLabel.font.lineHeight)
         r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(top + topMargin + marginForContent, 0.0, -marginForContent, 0.0))
         return CGRectIntegral(r)
     }
 
-    override func editingRectForBounds(bounds:CGRect) -> CGRect {
+    override public func editingRectForBounds(bounds:CGRect) -> CGRect {
         var r = super.editingRectForBounds(bounds)
         var top = ceil(nameLabel.font.lineHeight)
         r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(top + topMargin + marginForContent, 0.0, -marginForContent, 0.0))
@@ -115,19 +115,19 @@ class NamedTextField: UITextField {
 
     // MARK: Appearance
 
-    override func tintColorDidChange() {
+    override public func tintColorDidChange() {
         super.tintColorDidChange()
         nameLabel.textColor = tintColor
     }
 
     // MARK: Initialize
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInit()
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
     }
